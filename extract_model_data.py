@@ -43,6 +43,7 @@ def get_models():
     return models
 
 MANUAL_MAKE_CHANGE = {
+    "ALLEN, ROB": "Rob Allen",
     "AMPEG/DAN ARMSTRONG AMPEG": "AMPEG",
     "ANDREAS": "ANDREAS GUITARS",
     "Aria": "ARIA (PRO II)",
@@ -50,23 +51,51 @@ MANUAL_MAKE_CHANGE = {
     "ARIA PRO II": "ARIA (PRO II)",
     "ARIA/ARIA PRO II": "ARIA (PRO II)",
     "BASS, INC. BSX": "BSX",
+    "BENEDETTO, ROBERT": "BENEDETTO",
     "Brawley": "BRAWLEY GUITARS",
     "Brian Eastwood": "Brian Eastwood Guitars",
     "BRIAN MOORE CUSTOM GUITARS": "Brian Moore",
+    "BUSCARINO, JOHN": "BUSCARINO",
+    "COLLINGS GUITARS": "Collings",
     "DON GROSH GUITARS": "GROSH",
     "EGYPT": "EGYPT GUITARS",
     "ERNIE BALL/MUSIC MAN": "Ernie Ball Music Man",
+    "EVERETT, KENT": "EVERETT",
     "FANO": "FANO GUITARS",
+    "FARNELL GUITARS, INC.": "FARNELL GUITARS",
+    "FROGGY BOTTOM GUITARS": "FROGGY BOTTOM",
     "G & L": "G&L",
+    "GALLAGHER GUITARS": "GALLAGHER",
     "GROSH, DON CUSTOM GUITARS": "GROSH",
+    "HERITAGE GUITAR, INC.": "HERITAGE",
     "HILL GUITAR COMPANY": "Kenny Hill",
+    "KAY BARNEY KESSEL ARTIST (MODEL 6700 S)": "KAY",
+    "KEN SMITH BASSES, LTD.": "Ken Smith",
     "J.B. PLAYER": "JB PLAYER",
+    "McINTURFF, TERRY C.": "McInturff",
+    "MANNE GUITARS": "MANNE",
+    "MJ GUITAR ENGINEERING": "MJ",
+    "MODULUS GUITARS": "Modulus",
     "MUSIC MAN": "Ernie Ball Music Man",
+    "PAUL REED SMITH GUITARS": "PRS",
+    "PAUL REED SMITH GUITARS (PRS)": "PRS",
+    "PAWAR GUITARS": "Pawar",
+    "PEDULLA, M.V.": "Pedulla",
     "RENAISSANCE GUITAR COMPANY": "Renaissance (Rick Turner)",
+    "RIBBECKE, TOM": "Ribbecke",
+    "ROBIN GUITARS": "Robin",
     "RODRIGUEZ, MANUEL AND SONS": "Manuel Rodriguez",
+    "ROSCOE GUITARS": "Roscoe",
+    "SCHAEFER GUITARS": "Schaefer",
+    "SEAGULL GUITARS": "Seagull",
     "STEVENS ELECTRICAL INSTRUMENTS": "Michael Stevens",
+    "TOM ANDERSON GUITARWORKS": "TOM ANDERSON",
+    "TV JONES GUITARS": "TV Jones",
     "TURNER, RICK": "RICK TURNER",
-    "U.S. MASTERS": "US Masters",
+    "U.S. MASTERS GUITAR WORKS": "US Masters",
+    "VEILLETTE GUITARS VEILLETTE": "Veillette",
+    "WRC GUITARS": "WRC",
+    "XTONE GUITARS": "XTONE",
     "ZEIDLER": "Zeidler (J.R.)",
 }
 
@@ -82,7 +111,7 @@ def match_models(makes, models):
         model_words = model.split(' ')
         for word_count in range(model_word_count, 0, -1):
             actual_word_count = word_count
-            potential_make = ' '.join(model_words[:word_count]).rstrip(',')
+            original_potential_make = potential_make = ' '.join(model_words[:word_count]).rstrip(',')
             if potential_make in MANUAL_MAKE_CHANGE:
                 potential_make = MANUAL_MAKE_CHANGE[potential_make]
                 actual_word_count = potential_make.count(' ') + 1
@@ -90,7 +119,9 @@ def match_models(makes, models):
             if potential_make in makes_by_word_count.get(actual_word_count, {}):
                 make = makes_by_word_count[actual_word_count][potential_make]
                 actual_model = model
-                if actual_model.lower().startswith(make.lower()):
+                if actual_model.lower().startswith(original_potential_make.lower()):
+                    actual_model = actual_model[len(original_potential_make):].strip()
+                elif actual_model.lower().startswith(make.lower()):
                     actual_model = actual_model[len(make):].strip()
                 make_model_lookup.setdefault(make, {})[actual_model] = model
                 break
