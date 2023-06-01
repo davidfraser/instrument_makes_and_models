@@ -17,3 +17,4 @@ Manual Download Instructions
 Data Extraction
 ---------------
 
+Run `python ../extract_model_data.py`
