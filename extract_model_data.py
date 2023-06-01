@@ -36,6 +36,7 @@ def get_models():
         key_m = MODEL_KEY_RE.match(key)
         if key_m:
             model_name, model_nid = key_m.groups()
+            model_name = model_name.replace('  ', ' ')
             models.append((model_name, model_nid))
         else:
             logging.warning("Unexpected key format: %s", key)
@@ -48,12 +49,16 @@ MANUAL_MAKE_CHANGE = {
     "ARIA": "ARIA (PRO II)",
     "ARIA PRO II": "ARIA (PRO II)",
     "ARIA/ARIA PRO II": "ARIA (PRO II)",
+    "BASS, INC. BSX": "BSX",
     "Brawley": "BRAWLEY GUITARS",
     "Brian Eastwood": "Brian Eastwood Guitars",
+    "BRIAN MOORE CUSTOM GUITARS": "Brian Moore",
+    "DON GROSH GUITARS": "GROSH",
     "EGYPT": "EGYPT GUITARS",
     "ERNIE BALL/MUSIC MAN": "Ernie Ball Music Man",
     "FANO": "FANO GUITARS",
     "G & L": "G&L",
+    "GROSH, DON CUSTOM GUITARS": "GROSH",
     "HILL GUITAR COMPANY": "Kenny Hill",
     "J.B. PLAYER": "JB PLAYER",
     "MUSIC MAN": "Ernie Ball Music Man",
@@ -99,7 +104,7 @@ def match_models(makes, models):
 def save_guitar_lists(make_model_lookup):
     lists_filename = join(dirname(abspath(__file__)), 'guitarlists', 'data', 'make_model.json')
     with open(lists_filename, 'w') as f:
-        json.dump(make_model_lookup, f, indent=4)
+        json.dump(make_model_lookup, f, indent=4, sort_keys=True)
 
 if __name__ == '__main__':
     makes = get_makes()
