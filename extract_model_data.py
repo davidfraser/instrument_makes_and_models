@@ -52,12 +52,14 @@ MANUAL_MAKE_CHANGE = {
     "Brian Eastwood": "Brian Eastwood Guitars",
     "EGYPT": "EGYPT GUITARS",
     "ERNIE BALL/MUSIC MAN": "Ernie Ball Music Man",
+    "FANO": "FANO GUITARS",
     "G & L": "G&L",
     "HILL GUITAR COMPANY": "Kenny Hill",
     "J.B. PLAYER": "JB PLAYER",
     "MUSIC MAN": "Ernie Ball Music Man",
     "RENAISSANCE GUITAR COMPANY": "Renaissance (Rick Turner)",
     "RODRIGUEZ, MANUEL AND SONS": "Manuel Rodriguez",
+    "STEVENS ELECTRICAL INSTRUMENTS": "Michael Stevens",
     "TURNER, RICK": "RICK TURNER",
     "U.S. MASTERS": "US Masters",
     "ZEIDLER": "Zeidler (J.R.)",
@@ -90,6 +92,7 @@ def match_models(makes, models):
         else:
             logging.warning("Could not find make for %s", model)
             unmatched.append(model)
+    # The UNKNOWN brand name had 169 models as of 2023-06-01, so close to that is not bad
     print(f"Found {len(makes)} makes, {len(models)} models, and failed to match {len(unmatched)} models")
     return make_model_lookup
 
