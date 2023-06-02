@@ -9,7 +9,7 @@ import re
 def get_makes():
     parser = HTMLParser()
     brands = []
-    find_html_filename = join(dirname(abspath(__file__)), 'guitarlists', 'data', 'find.html')
+    find_html_filename = join(dirname(abspath(__file__)), 'src-data', 'guitar-list.com', 'find.html')
     with open(find_html_filename, 'r', encoding='utf-8') as f:
         tree = parse(f, parser)
     for brand_option in tree.xpath('//select[@id="edit-jump"]//option'):
@@ -29,7 +29,7 @@ MODEL_KEY_RE = re.compile(r'\s*(\S.*)\s+\[nid:([0-9]+)\]\s*')
 
 def get_models():
     models = []
-    models_filename = join(dirname(abspath(__file__)), 'guitarlists', 'data', 'field_model_name.json')
+    models_filename = join(dirname(abspath(__file__)), 'src-data', 'guitar-list.com', 'field_model_name.json')
     with open(models_filename, 'r', encoding='utf-8') as f:
         model_data = json.load(f)
     for key, value in model_data.items():
@@ -133,7 +133,7 @@ def match_models(makes, models):
     return make_model_lookup
 
 def save_guitar_lists(make_model_lookup):
-    lists_filename = join(dirname(abspath(__file__)), 'guitarlists', 'data', 'make_model.json')
+    lists_filename = join(dirname(abspath(__file__)), 'guitar-makes-and-models.json')
     with open(lists_filename, 'w') as f:
         json.dump(make_model_lookup, f, indent=4, sort_keys=True)
 

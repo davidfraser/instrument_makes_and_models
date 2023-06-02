@@ -1,18 +1,18 @@
-Downloading Guitar Lists
-========================
+Instrument Makes and Models
+===========================
 
-This turned out to be tricky to do with Scrapy as the website is designed for Javascript and CSS;
-possibly to avoid crawlers.  I didn't see any copyright notices on the site, so this is presumably to prevent server overload.
+This is a database of instrument makes and models, so far only covering guitars.
 
-Manual Download Instructions
-----------------------------
+Manual Download of Guitar List Data
+-----------------------------------
 
+* This needs to be done manually rather than with a web scraper
 * Go to https://www.guitar-list.com/find in your browser
 * Right-Click->Save As...
-* Save under `guitarlists/data/find.html` as *Webpage, HTML Only*
+* Save under `src-data/guitar-list.com/find.html` as *Webpage, HTML Only*
 * Go to https://www.guitar-list.com/node_reference/autocomplete/node/content_my_guitar_gear/field_model_name in your browser
 * Right-Click->Save As...
-* Save under `guitarlists/data/field_model_name.json` as *JSON*
+* Save under `src-data/guitar-list.com/field_model_name.json` as *JSON*
 
 Environment Setup
 -----------------
@@ -26,4 +26,4 @@ Data Extraction
 ---------------
 
 * `venv\Scripts\activate` (Activate the virtual environment - Windows form)
-* `python extract_model_data.py` (Extract data into `guitarlists/data/make_model.json`)
+* `python extract_model_data.py` (Extract data into `guitar-makes-and-models.json`)
