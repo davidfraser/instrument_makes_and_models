@@ -1,0 +1,43 @@
+{
+    "ADMIRA": {
+      "Virtuoso": "Admira Virtusoso"
+    },
+    "CORT": {
+      "CR100": "Cort CR100",
+      "CR200": "Cort CR200",
+      "CR250": "Cort CR250",
+      "CR300": "Cort CR300",
+      "G110": "Cort G110",
+      "G250":  "Cort G250",
+      "G260CS":  "Cort G260CS",
+      "G290 FAT II":  "Cort G290 FAT II",
+      "G200": "Cort G200",
+      "G250 Spectrum": "Cort G250 Spectrum",
+      "G280 Select": "Cort G280 Select",
+      "G300 Pro": "Cort G300 Pro",
+      "G300 Raw": "Cort G300 Raw",
+      "G300 Glam": "Cort G300 Glam",
+      "KX100": "Cort KX100",
+      "KX300": "Cort KX300",
+      "KX300 Etched": "Cort KX300 Etched",
+      "KX307 Multi Scale": "Cort KX307 Multi Scale",
+      "KX500 Etched": "Cort KX500 Etched",
+      "KX507 Multi Scale": "Cort KX507 Multi Scale",
+      "KX508 Multi Scale II": "Cort KX508 Multi Scale II",
+      "KX700 EverTune": "Cort KX700 EverTune",
+      "Sunset": "Cort Sunset Nylectric",
+      "MBM-1": "Cort MBM-1",
+      "MBM-2": "Cort MBM-2",
+      "MBM-2 LH": "Cort MBM-2 LH",
+      "MBM-2 Sustainiac": "Cort MBM-2 Sustainiac",
+      "X100": "Cort X100",
+      "X300": "Cort X300",
+      "X500 Menace": "Cort X500 Menace",
+      "X700 Mutility": "Cort X700 Mutility",
+      "X700 Duality II": "Cort X700 Duality II",
+      "Yorktown-BV": "Cort Yorktown-BV"
+    },
+    "SQUIER": {
+      "SA-105CE": "Fender Squier SA-105CE"
+    }
+}

@@ -132,6 +132,18 @@ def match_models(makes, models):
     print(f"Found {len(makes)} makes, {len(models)} models, and failed to match {len(unmatched)} models")
     return make_model_lookup
 
+def read_manual_makes_and_models():
+    manual_filename = join(dirname(abspath(__file__)), 'manual-guitar-makes-and-models.json')
+    with open(manual_filename, 'r') as f:
+        return json.load(f)
+
+def merge_makes_and_models(*make_model_lookups):
+    makes_and_models = {}
+    for make_model_lookup in make_model_lookups:
+        for make, model_dict in make_model_lookup.items():
+            makes_and_models.setdefault(make, {}).update(model_dict)
+    return makes_and_models
+
 def save_guitar_lists(make_model_lookup):
     lists_filename = join(dirname(abspath(__file__)), 'guitar-makes-and-models.json')
     with open(lists_filename, 'w') as f:
@@ -141,4 +153,6 @@ if __name__ == '__main__':
     makes = get_makes()
     models = get_models()
     make_model_lookup = match_models(makes, models)
+    manual_makes_and_models = read_manual_makes_and_models()
+    make_model_lookup = merge_makes_and_models(make_model_lookup, manual_makes_and_models)
     save_guitar_lists(make_model_lookup)
